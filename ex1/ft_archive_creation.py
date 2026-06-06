@@ -5,7 +5,7 @@ import typing
 def main() -> None:
     total_arguments = len(sys.argv)
     if (total_arguments != 2):
-        print("Usage: ft_ancient_text.py <file>")
+        print("Usage: ft_archive_creation.py <file>")
         return
     print("=== Cyber Archives Recovery & Preservation ===")
     file_name = sys.argv[1]
@@ -32,6 +32,9 @@ def main() -> None:
     except Exception as e:
         print(f"Error opening file '{file_name}': {e}")
         return
+    finally:
+        if f is not None:
+            f.close()
     new_file = input("Enter new file name (or empty): ")
     if new_file:
         print(f"Saving data to '{new_file}'")
@@ -39,7 +42,7 @@ def main() -> None:
             f = open(new_file, "w")
             f.write(data)
         except Exception as e:
-            print(f"Error opening file: {e}")
+            print(f"Error opening file '{new_file}': {e}")
             return
         else:
             print(f"Data saved in file '{new_file}'")
