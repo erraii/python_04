@@ -3,7 +3,12 @@ def secure_archive(file_name: str, action: str = "r",
     try:
         if action == "r":
             with open(file_name, action) as file:
-                return (True, file.read())
+                while True:
+                    line = file.readline()
+                    if not line:
+                        break
+                    print(line, end='')
+                return (True, "aaa")
         elif action == "w":
             with open(file_name, "w") as file:
                 file.write(content)
