@@ -13,6 +13,8 @@ def main() -> None:
     try:
         print(f"Accessing file '{file_name}'")
         f = open(file_name)
+        print(f.encoding)
+        print(type(f))
         print("---\n")
         print(f.read())
         print("---")
